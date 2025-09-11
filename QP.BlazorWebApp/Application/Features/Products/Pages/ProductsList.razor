@@ -30,12 +30,12 @@ else
 @code {
     protected override void OnInitialized()
     {
-        base.OnInitialized();   // Fluxor se engancha aquí
+        base.OnInitialized();   
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
-            Facade.LoadProducts();  // dispara la carga
+            Facade.LoadProducts(); 
     }
 }
