@@ -1,0 +1,29 @@
+{
+    "runtime": "Net90",
+    "documentGenerator": {
+        "fromDocument": {
+            "url": "https://localhost:7189/swagger/v1/swagger.json"
+
+        }
+    },
+    "codeGenerators": {
+        "openApiToCSharpClient": {
+            "className": "MPApi",
+            "interfaceName": "IMPApi",
+            "generateClientInterfaces": true,
+            "namespace": "MP",
+            "injectHttpClient": true,
+            "httpClientType": "System.Net.Http.HttpClient",
+            "useBaseUrl": true,
+            "generateClientClasses": true,
+            "generateDtoTypes": true,
+            "generateResponseClasses": false,
+
+            "wrapResponses": false,
+            "wrapResponseMethods": [],
+
+            "generateOptionalPropertiesAsNullable": true,
+            "output": "Clients/MP/MPApi.g.cs"
+        }
+    }
+}

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QP.BlazorWebApp.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b3d7b446eb7506f0c19ac393a8763d6daa2211a8")]
 [assembly: System.Reflection.AssemblyProductAttribute("QP.BlazorWebApp.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QP.BlazorWebApp.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

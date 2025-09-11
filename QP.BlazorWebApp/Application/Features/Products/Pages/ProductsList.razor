@@ -1,0 +1,41 @@
+﻿@page "/productos"
+
+@using QP.BlazorWebApp.Application.Features.Products.Store
+@using QP.BlazorWebApp.Application.Features.Products.Store.State
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+@inject ProductsFacade Facade
+@inject Fluxor.IState<ProductsState> ProductsState
+
+<h3>Productos</h3>
+
+@if (ProductsState.Value.ProductsLoading)
+{
+    <p>Cargando…</p>
+}
+else if (ProductsState.Value.Products.Count == 0)
+{
+    <p>No hay productos disponibles.</p>
+}
+else
+{
+    <ul>
+        @foreach (var p in ProductsState.Value.Products)
+        {
+            <li>@p.Name</li>
+        }
+    </ul>
+}
+
+@code {
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();   // Fluxor se engancha aquí
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            Facade.LoadProducts();  // dispara la carga
+    }
+}

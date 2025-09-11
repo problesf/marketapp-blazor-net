@@ -1,7 +1,68 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|c:\\users\\pablo.robles\\desktop\\net\\marketnet\\qp.blazorwebapp\\application\\features\\products\\pages\\productslist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|solutionrelative:qp.blazorwebapp\\application\\features\\products\\pages\\productslist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|c:\\users\\pablo.robles\\desktop\\net\\marketnet\\qp.blazorwebapp\\application\\features\\products\\store\\reducers\\productsreducers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|solutionrelative:qp.blazorwebapp\\application\\features\\products\\store\\reducers\\productsreducers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|c:\\users\\pablo.robles\\desktop\\net\\marketnet\\qp.blazorwebapp\\application\\features\\products\\store\\productsfacade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|solutionrelative:qp.blazorwebapp\\application\\features\\products\\store\\productsfacade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|c:\\users\\pablo.robles\\desktop\\net\\marketnet\\qp.blazorwebapp\\application\\features\\products\\store\\effects\\producteffects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|solutionrelative:qp.blazorwebapp\\application\\features\\products\\store\\effects\\producteffects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|c:\\users\\pablo.robles\\desktop\\net\\marketnet\\qp.blazorwebapp\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|solutionrelative:qp.blazorwebapp\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|c:\\users\\pablo.robles\\desktop\\net\\marketnet\\qp.blazorwebapp\\application\\features\\products\\store\\actions\\productsactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|solutionrelative:qp.blazorwebapp\\application\\features\\products\\store\\actions\\productsactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|c:\\users\\pablo.robles\\desktop\\net\\marketnet\\qp.blazorwebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|solutionrelative:qp.blazorwebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|c:\\users\\pablo.robles\\desktop\\net\\marketnet\\qp.blazorwebapp\\clients\\mp\\mpapi.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|solutionrelative:qp.blazorwebapp\\clients\\mp\\mpapi.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|c:\\users\\pablo.robles\\desktop\\net\\marketnet\\qp.blazorwebapp\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|solutionrelative:qp.blazorwebapp\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|c:\\users\\pablo.robles\\desktop\\net\\marketnet\\qp.blazorwebapp\\nswag.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|solutionrelative:qp.blazorwebapp\\nswag.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|c:\\users\\pablo.robles\\desktop\\net\\marketnet\\qp.blazorwebapp\\application\\core\\pages\\fetchdata.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|solutionrelative:qp.blazorwebapp\\application\\core\\pages\\fetchdata.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|c:\\users\\pablo.robles\\desktop\\net\\marketnet\\qp.blazorwebapp\\application\\core\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|solutionrelative:qp.blazorwebapp\\application\\core\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|c:\\users\\pablo.robles\\desktop\\net\\marketnet\\qp.blazorwebapp\\application\\core\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|solutionrelative:qp.blazorwebapp\\application\\core\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|c:\\users\\pablo.robles\\desktop\\net\\marketnet\\qp.blazorwebapp\\qp.blazorwebapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|solutionrelative:qp.blazorwebapp\\qp.blazorwebapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|c:\\users\\pablo.robles\\desktop\\net\\marketnet\\qp.blazorwebapp\\qp.blazorwebapp.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{F36D71DB-4929-4DAA-B6E5-2F00BBDE4B88}|QP.BlazorWebApp\\QP.BlazorWebApp.csproj|solutionrelative:qp.blazorwebapp\\qp.blazorwebapp.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,11 +70,205 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductsFacade.cs",
+              "DocumentMoniker": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Application\\Features\\Products\\Store\\ProductsFacade.cs",
+              "RelativeDocumentMoniker": "QP.BlazorWebApp\\Application\\Features\\Products\\Store\\ProductsFacade.cs",
+              "ToolTip": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Application\\Features\\Products\\Store\\ProductsFacade.cs",
+              "RelativeToolTip": "QP.BlazorWebApp\\Application\\Features\\Products\\Store\\ProductsFacade.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBgAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-11T12:27:35.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductEffects.cs",
+              "DocumentMoniker": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Application\\Features\\Products\\Store\\Effects\\ProductEffects.cs",
+              "RelativeDocumentMoniker": "QP.BlazorWebApp\\Application\\Features\\Products\\Store\\Effects\\ProductEffects.cs",
+              "ToolTip": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Application\\Features\\Products\\Store\\Effects\\ProductEffects.cs",
+              "RelativeToolTip": "QP.BlazorWebApp\\Application\\Features\\Products\\Store\\Effects\\ProductEffects.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAADwvxQAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-11T11:32:02.132Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductsList.razor",
+              "DocumentMoniker": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Application\\Features\\Products\\Pages\\ProductsList.razor",
+              "RelativeDocumentMoniker": "QP.BlazorWebApp\\Application\\Features\\Products\\Pages\\ProductsList.razor",
+              "ToolTip": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Application\\Features\\Products\\Pages\\ProductsList.razor",
+              "RelativeToolTip": "QP.BlazorWebApp\\Application\\Features\\Products\\Pages\\ProductsList.razor",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAkwCEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-11T13:15:58.818Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductsReducers.cs",
+              "DocumentMoniker": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Application\\Features\\Products\\Store\\Reducers\\ProductsReducers.cs",
+              "RelativeDocumentMoniker": "QP.BlazorWebApp\\Application\\Features\\Products\\Store\\Reducers\\ProductsReducers.cs",
+              "ToolTip": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Application\\Features\\Products\\Store\\Reducers\\ProductsReducers.cs",
+              "RelativeToolTip": "QP.BlazorWebApp\\Application\\Features\\Products\\Store\\Reducers\\ProductsReducers.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAIwBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-11T11:22:32.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\App.razor",
+              "RelativeDocumentMoniker": "QP.BlazorWebApp\\App.razor",
+              "ToolTip": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\App.razor",
+              "RelativeToolTip": "QP.BlazorWebApp\\App.razor",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-11T11:55:37.959Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Program.cs",
+              "RelativeDocumentMoniker": "QP.BlazorWebApp\\Program.cs",
+              "ToolTip": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Program.cs",
+              "RelativeToolTip": "QP.BlazorWebApp\\Program.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-11T11:44:29.112Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductsActions.cs",
+              "DocumentMoniker": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Application\\Features\\Products\\Store\\Actions\\ProductsActions.cs",
+              "RelativeDocumentMoniker": "QP.BlazorWebApp\\Application\\Features\\Products\\Store\\Actions\\ProductsActions.cs",
+              "ToolTip": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Application\\Features\\Products\\Store\\Actions\\ProductsActions.cs",
+              "RelativeToolTip": "QP.BlazorWebApp\\Application\\Features\\Products\\Store\\Actions\\ProductsActions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-11T12:28:51.292Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MPApi.g.cs",
+              "DocumentMoniker": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Clients\\MP\\MPApi.g.cs",
+              "RelativeDocumentMoniker": "QP.BlazorWebApp\\Clients\\MP\\MPApi.g.cs",
+              "ToolTip": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Clients\\MP\\MPApi.g.cs",
+              "RelativeToolTip": "QP.BlazorWebApp\\Clients\\MP\\MPApi.g.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAqwHoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-11T11:54:16.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\_Imports.razor",
+              "RelativeDocumentMoniker": "QP.BlazorWebApp\\_Imports.razor",
+              "ToolTip": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\_Imports.razor",
+              "RelativeToolTip": "QP.BlazorWebApp\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-11T11:53:35.692Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "nswag.json",
+              "DocumentMoniker": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\nswag.json",
+              "RelativeDocumentMoniker": "QP.BlazorWebApp\\nswag.json",
+              "ToolTip": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\nswag.json",
+              "RelativeToolTip": "QP.BlazorWebApp\\nswag.json",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAiwB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-11T11:47:05.814Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Index.razor",
+              "DocumentMoniker": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Application\\Core\\Pages\\Index.razor",
+              "RelativeDocumentMoniker": "QP.BlazorWebApp\\Application\\Core\\Pages\\Index.razor",
+              "ToolTip": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Application\\Core\\Pages\\Index.razor",
+              "RelativeToolTip": "QP.BlazorWebApp\\Application\\Core\\Pages\\Index.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-11T11:57:26.086Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Application\\Core\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "QP.BlazorWebApp\\Application\\Core\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Application\\Core\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "QP.BlazorWebApp\\Application\\Core\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-11T12:01:03.759Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "FetchData.razor",
+              "DocumentMoniker": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Application\\Core\\Pages\\FetchData.razor",
+              "RelativeDocumentMoniker": "QP.BlazorWebApp\\Application\\Core\\Pages\\FetchData.razor",
+              "ToolTip": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\Application\\Core\\Pages\\FetchData.razor",
+              "RelativeToolTip": "QP.BlazorWebApp\\Application\\Core\\Pages\\FetchData.razor",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-11T11:53:15.359Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "QP.BlazorWebApp",
+              "DocumentMoniker": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\QP.BlazorWebApp.csproj",
+              "RelativeDocumentMoniker": "QP.BlazorWebApp\\QP.BlazorWebApp.csproj",
+              "ToolTip": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\QP.BlazorWebApp.csproj",
+              "RelativeToolTip": "QP.BlazorWebApp\\QP.BlazorWebApp.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-09-11T11:44:36.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "QP.BlazorWebApp",
+              "DocumentMoniker": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\QP.BlazorWebApp.csproj",
+              "RelativeDocumentMoniker": "QP.BlazorWebApp\\QP.BlazorWebApp.csproj",
+              "ToolTip": "C:\\Users\\pablo.robles\\Desktop\\NET\\MarketNet\\QP.BlazorWebApp\\QP.BlazorWebApp.csproj",
+              "RelativeToolTip": "QP.BlazorWebApp\\QP.BlazorWebApp.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-09-11T11:44:38.954Z",
+              "EditorCaption": ""
             }
           ]
         }
