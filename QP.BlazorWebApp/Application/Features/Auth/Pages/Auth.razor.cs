@@ -18,6 +18,7 @@ namespace QP.BlazorWebApp.Application.Features.Auth.Pages
                 IsLogin = true;
             else if (uri.Contains("/register"))
                 IsLogin = false;
+            base.OnInitialized();
         }
     }
 }

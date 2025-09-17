@@ -4,17 +4,24 @@
 
 @if(model != null)
 {
-    <MudForm>
+    <MudForm Model="@model" @ref="_form">
         <MudTextField Label="Email" 
             @bind-Value="model.Email"
             For="@(() => model.Email)"
             Variant="Variant.Outlined" />
         <MudTextField Label="Password"
-            Class="mt-3"
-            @bind-Value="model.Password" 
-            For="@(() => model.Password)" 
-            InputType="InputType.Password"
-            Variant="Variant.Outlined" />
+                      Class="mt-3"
+                      @bind-Value="model.Password" 
+                      For="@(() => model.Password)" 
+                      InputType="InputType.Password"
+                      Variant="Variant.Outlined" />
+        <MudButton Class="mt-4 register-card"
+                   Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   OnClick="SubmitAsync"
+                   Disabled="@(_form is not null && !_form.IsValid)">
+            Login
+        </MudButton>
     </MudForm>
 }
 else

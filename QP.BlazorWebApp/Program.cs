@@ -1,8 +1,10 @@
 using Fluxor;
 using Fluxor.Blazor.Web.ReduxDevTools;
 using MP;
+using MudBlazor;
 using MudBlazor.Services;
 using QP.BlazorWebApp.Application.Core.Data;
+using QP.BlazorWebApp.Application.Core.Handlers;
 using QP.BlazorWebApp.Application.Features.Auth.Store;
 using QP.BlazorWebApp.Application.Features.Auth.Store.State;
 using QP.BlazorWebApp.Application.Features.Products.Store;
@@ -16,17 +18,6 @@ builder.Services.AddRazorPages(options =>
     options.RootDirectory = "/Application/Core/Pages";
 });
 
-
-builder.Services.AddHttpClient("MPApi", c =>
-{
-    c.BaseAddress = new Uri("https://localhost:7189");
-});
-builder.Services.AddScoped<IMPApi>(sp =>
-{
-    var http = sp.GetRequiredService<IHttpClientFactory>().CreateClient("MPApi");
-    return new MPApi("https://localhost:7189", http);
-});
-
 builder.Services.AddFluxor(o =>
 {
     o.ScanAssemblies(
@@ -36,12 +27,31 @@ builder.Services.AddFluxor(o =>
     );
     o.UseReduxDevTools();
 });
-builder.Services.AddMudServices();
+builder.Services.AddTransient<BearerTokenHandler>();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddScoped<ProductsFacade>();
 builder.Services.AddScoped<AuthFacade>();
-builder.Services.AddMudServices();
+builder.Services.AddMudServices(config =>
+{
+    config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomRight;
+    config.SnackbarConfiguration.PreventDuplicates = false;
+    config.SnackbarConfiguration.NewestOnTop = false;
+    config.SnackbarConfiguration.ShowCloseIcon = true;
+    config.SnackbarConfiguration.VisibleStateDuration = 5000;
+    config.SnackbarConfiguration.HideTransitionDuration = 500;
+    config.SnackbarConfiguration.ShowTransitionDuration = 500;
+});
+builder.Services.AddHttpClient("MPApi", c =>
+{
+    c.BaseAddress = new Uri("http://localhost:5121");
+}).AddHttpMessageHandler<BearerTokenHandler>();
+
+builder.Services.AddScoped<IMPApi>(sp =>
+{
+    var http = sp.GetRequiredService<IHttpClientFactory>().CreateClient("MPApi");
+    return new MPApi("http://localhost:5121", http);
+});
 
 var app = builder.Build();
 

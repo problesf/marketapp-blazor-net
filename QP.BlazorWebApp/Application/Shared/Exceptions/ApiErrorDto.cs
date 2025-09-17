@@ -1,9 +1,16 @@
-﻿namespace QP.BlazorWebApp.Application.Shared.Exceptions
+﻿using System.Text.Json.Serialization;
+
+namespace QP.BlazorWebApp.Application.Shared.Exceptions
 {
     public class ApiErrorDto
     {
-        public string Code { get; set; } = "";
-        public int Status { get; set; }
+        [JsonPropertyName("errorType")]
+        public string ErrorType { get; set; } = "";
+
+        [JsonPropertyName("statusCode")]
+        public int StatusCode { get; set; }
+
+        [JsonPropertyName("message")]
         public string Message { get; set; } = "";
     }
 

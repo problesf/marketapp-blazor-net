@@ -32,8 +32,9 @@ namespace QP.BlazorWebApp.Application.Features.Auth.Store.Effects
                     Password = action.Model.Password
                 };
                 var response = await _api.LoginAsync(query);
+                _snackbar.Add("Bienvenid@ de nuevo", Severity.Success);
                 dispatcher.Dispatch(new LoginSuccess(response.AccessToken, response.Roles));
-                _nav.NavigateTo("/products");
+                _nav.NavigateTo("/productOs");
 
             }
             catch (ApiException ex)
@@ -41,13 +42,12 @@ namespace QP.BlazorWebApp.Application.Features.Auth.Store.Effects
                 ApiErrorDto? error = null;
                 try
                 {
-                    error = JsonSerializer.Deserialize<ApiErrorDto>(ex.Message);
+                    error = JsonSerializer.Deserialize<ApiErrorDto>(ex.Response);
                 }
                 catch { }
 
                 var msg = error?.Message ?? ex.Message;
-                _snackbar.Add(msg, Severity.Success);
-                dispatcher.Dispatch(new RegisterError(msg));
+                _snackbar.Add(msg, Severity.Error);
                 dispatcher.Dispatch(new LoginError(ex.Message));
             }
         }
@@ -93,12 +93,12 @@ namespace QP.BlazorWebApp.Application.Features.Auth.Store.Effects
                 ApiErrorDto? error = null;
                 try
                 {
-                    error = JsonSerializer.Deserialize<ApiErrorDto>(ex.Message);
+                    error = JsonSerializer.Deserialize<ApiErrorDto>(ex.Response);
                 }
                 catch { }
 
                 var msg = error?.Message ?? ex.Message;
-                _snackbar.Add(msg, Severity.Success);
+                _snackbar.Add(msg, Severity.Error);
                 dispatcher.Dispatch(new RegisterError(msg));
             }
         }
