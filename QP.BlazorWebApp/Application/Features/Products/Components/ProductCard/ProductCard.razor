@@ -1,0 +1,41 @@
+﻿<div class="square-card">
+    <MudCard class="h-100 w-auto d-flex flex-column">
+        <MudCardHeader class="bg-dark text-white">
+            <div class="d-flex flex-column">
+                <MudText class="fw-bold text-truncate">@product.Name</MudText>
+                <MudText class="text-muted">@product.Price €</MudText>
+            </div>
+        </MudCardHeader>
+
+        <MudCardContent>
+            <div class="mb-1 d-flex">
+                <span class="fw-bold me-1">Categorías:</span>
+                <span class="flex-grow-1 text-truncate"
+                      title="@((product?.Categories == null || product.Categories.Count == 0) ? "Sin categorías" : string.Join(", ", product.Categories.Select(c => c.Name)))">
+                    @((product?.Categories == null || product.Categories.Count == 0)
+                                        ? "Sin categorías"
+                                        : string.Join(", ", product.Categories.Select(c => c.Name)))
+                </span>
+            </div>
+
+            <div class="mb-1 d-flex">
+                <span class="fw-bold me-1">Stock:</span>
+                <span>@product.Stock</span>
+            </div>
+            <p class="line-clamp-4">@product.Description</p>
+        </MudCardContent>
+
+        <MudCardActions class="d-flex justify-content-end">
+            <MudButton Variant="Variant.Filled" Size="Size.Medium" Color="Color.Tertiary" EndIcon="@Icons.Material.Filled.AddShoppingCart">Añadir al carrito</MudButton>
+        </MudCardActions>
+    </MudCard>
+
+    @if (!(product?.IsActive ?? true))
+    {
+        <div class="overlay"></div>
+    }
+</div>
+
+@code {
+    [Parameter] public ProductDto product { get; set; }
+}

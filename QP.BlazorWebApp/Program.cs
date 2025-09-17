@@ -1,7 +1,10 @@
 using Fluxor;
 using Fluxor.Blazor.Web.ReduxDevTools;
 using MP;
+using MudBlazor.Services;
 using QP.BlazorWebApp.Application.Core.Data;
+using QP.BlazorWebApp.Application.Features.Auth.Store;
+using QP.BlazorWebApp.Application.Features.Auth.Store.State;
 using QP.BlazorWebApp.Application.Features.Products.Store;
 using QP.BlazorWebApp.Application.Features.Products.Store.State;
 
@@ -28,16 +31,18 @@ builder.Services.AddFluxor(o =>
 {
     o.ScanAssemblies(
         typeof(Program).Assembly,
-        typeof(ProductsState).Assembly
+        typeof(ProductsState).Assembly,
+        typeof(AuthState).Assembly
     );
-#if DEBUG
     o.UseReduxDevTools();
-#endif
 });
-
+builder.Services.AddMudServices();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddScoped<ProductsFacade>();
+builder.Services.AddScoped<AuthFacade>();
+builder.Services.AddMudServices();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

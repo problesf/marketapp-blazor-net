@@ -1,0 +1,22 @@
+﻿@page "/login"
+@page "/register"
+@inherits FluxorComponent
+@using Fluxor.Blazor.Web.Components
+@using QP.BlazorWebApp.Application.Features.Auth.Components
+
+<div class="register-card">
+    <MudCard Outlined="true">
+        <MudCardContent>
+            @if (IsLogin)
+            {
+                <LoginForm />
+            }
+            else
+            {
+                <RegisterForm />
+            }
+        </MudCardContent>
+
+    </MudCard>
+</div>
+

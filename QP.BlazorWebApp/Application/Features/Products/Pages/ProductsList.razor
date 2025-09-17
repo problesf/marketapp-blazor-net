@@ -1,13 +1,27 @@
 ﻿@page "/productos"
 
+@using MudBlazor
+@using QP.BlazorWebApp.Application.Features.Products.Components
+@using QP.BlazorWebApp.Application.Features.Products.Components.ProductCard
 @using QP.BlazorWebApp.Application.Features.Products.Store
 @using QP.BlazorWebApp.Application.Features.Products.Store.State
+@using QP.BlazorWebApp.Application.Features.Products.Model              
+
 @inherits Fluxor.Blazor.Web.Components.FluxorComponent
 
 @inject ProductsFacade Facade
 @inject Fluxor.IState<ProductsState> ProductsState
+@inject IDialogService DialogService
 
-<h3>Productos</h3>
+<MudStack Direction="Row" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Class="mb-3">
+    <h3 class="m-0">Productos</h3>
+    <MudButton Color="Color.Primary"
+               Variant="Variant.Filled"
+               StartIcon="@Icons.Material.Filled.Add"
+               OnClick="OpenCreateDialog">
+        Crear producto
+    </MudButton>
+</MudStack>
 
 @if (ProductsState.Value.ProductsLoading)
 {
@@ -19,23 +33,41 @@ else if (ProductsState.Value.Products.Count == 0)
 }
 else
 {
-    <ul>
+    <div class="products-grid">
         @foreach (var p in ProductsState.Value.Products)
         {
-            <li>@p.Name</li>
+            <ProductCard product="@p" />
         }
-    </ul>
+    </div>
 }
 
 @code {
     protected override void OnInitialized()
     {
-        base.OnInitialized();   
+        base.OnInitialized();
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
-            Facade.LoadProducts(); 
+            Facade.LoadProducts();
+    }
+
+    private async Task OpenCreateDialog()
+    {
+        var options = new DialogOptions
+        {
+            CloseButton = true,
+            FullWidth = true,
+            MaxWidth = MaxWidth.Medium
+        };
+
+        var dialog = DialogService.Show<ProductManagementDialog>("ProductManagement", new DialogParameters(), options);
+        var result = await dialog.Result;
+
+        if (!result.Canceled && result.Data is ProductDto dto)
+        {
+            Facade.CreateProduct((ProductDto)result.Data);
+        }
     }
 }

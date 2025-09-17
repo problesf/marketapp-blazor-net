@@ -26,5 +26,30 @@ namespace QP.BlazorWebApp.Application.Features.Products.Store.Reducers
             return state with { ProductsLoading = false };
 
         }
+
+        [ReducerMethod]
+        public static ProductsState ReduceCreateProduct(ProductsState state, CreateProduct action)
+        {
+            return state with { ProductsLoading = true };
+
+
+        }
+        [ReducerMethod]
+        public static ProductsState ReduceCreateProductSuccess(ProductsState state, CreateProductSuccess action)
+        {
+            return state with
+            {
+                ProductsLoading = false,
+                Products = [.. state.Products, action.Product]
+            };
+        }
+
+
+        [ReducerMethod]
+        public static ProductsState ReduceCreateProductError(ProductsState state, CreateProductError action)
+        {
+            return state with { ProductsLoading = false };
+
+        }
     }
 }

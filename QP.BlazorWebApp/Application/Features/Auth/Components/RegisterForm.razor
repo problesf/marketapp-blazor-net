@@ -1,0 +1,59 @@
+﻿@using Fluxor.Blazor.Web.Components
+@using QP.BlazorWebApp.Application.Features.Auth.Enum
+@using QP.BlazorWebApp.Application.Features.Auth.Model
+@inherits FluxorComponent
+
+
+@if (model is not null)
+{
+    <MudForm Model="@model" @ref="_form">
+        <MudTextField Label="Email"
+                      @bind-Value="model.Email"
+                      For="@(() => model.Email)"
+                      Variant="Variant.Outlined"/>
+
+        <MudTextField Label="Contraseña"
+                      Class="mt-3"
+                      @bind-Value="model.Password1"
+                      For="@(() => model.Password1)"
+                      InputType="InputType.Password"
+                      Variant="Variant.Outlined"/>
+
+        <MudTextField Label="Confirmar contraseña"
+                      Class="mt-3"
+                      @bind-Value="model.Password2"
+                      For="@(() => model.Password2)"
+                      InputType="InputType.Password"
+                      Variant="Variant.Outlined"/>
+
+        <MudSelect T="UserType"
+                   Class="mt-3"
+                   @bind-Value="model.UserType"
+                   Label="Tipo de usuario"
+                   Variant="Variant.Outlined">
+                  
+            @foreach (var tipo in Enum.GetValues<UserType>())
+            {
+                <MudSelectItem Value="@tipo">@tipo</MudSelectItem>
+            }
+        </MudSelect>
+
+        @if (model.UserType == UserType.Vendedor)
+        {
+            <MudTextField Label="Nombre de la tienda"
+                          Class="mt-3"
+                          @bind-Value="model.StoreName"
+                          For="@(() => model.StoreName)"
+                          Variant="Variant.Outlined"
+                          Validation="StoreNameRules" />
+        }
+
+        <MudButton Class="mt-4 register-card"
+                   Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   OnClick="SubmitAsync"
+                   Disabled="@(_form is not null && !_form.IsValid)">
+            Crear cuenta
+        </MudButton>
+    </MudForm>
+}

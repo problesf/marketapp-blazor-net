@@ -21,8 +21,9 @@ namespace QP.BlazorWebApp.Application.Features.Products.Store
         public bool IsLoading => _state.Value.ProductsLoading;
         public ICollection<ProductDto> Products => _state.Value.Products;
 
-        public void LoadProducts() =>
-            _dispatcher.Dispatch(new LoadProducts());
+        public void LoadProducts() => _dispatcher.Dispatch(new LoadProducts());
+
+        public void CreateProduct(ProductDto product) => _dispatcher.Dispatch(new CreateProduct(product));
     }
 
 }

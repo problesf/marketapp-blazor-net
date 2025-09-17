@@ -1,0 +1,23 @@
+﻿@using Fluxor.Blazor.Web.Components
+@using QP.BlazorWebApp.Application.Features.Auth.Model
+@inherits FluxorComponent
+
+@if(model != null)
+{
+    <MudForm>
+        <MudTextField Label="Email" 
+            @bind-Value="model.Email"
+            For="@(() => model.Email)"
+            Variant="Variant.Outlined" />
+        <MudTextField Label="Password"
+            Class="mt-3"
+            @bind-Value="model.Password" 
+            For="@(() => model.Password)" 
+            InputType="InputType.Password"
+            Variant="Variant.Outlined" />
+    </MudForm>
+}
+else
+{
+    
+}
