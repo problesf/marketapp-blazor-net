@@ -1,5 +1,12 @@
-﻿@using QP.BlazorWebApp.Application.Core.Components
+﻿@using Fluxor
+@using QP.BlazorWebApp.Application.Core.Components
+@using QP.BlazorWebApp.Application.Features.Auth.Store.State
+@using static QP.BlazorWebApp.Application.Features.Auth.Store.Actions.BootstrapActions
+
 @inherits LayoutComponentBase
+
+@inject IDispatcher Dispatcher
+@inject IState<AuthState> Auth
 
 <MudThemeProvider />
 <MudPopoverProvider />
@@ -24,3 +31,13 @@
         </article>
     </main>
 </div>
+
+@code {
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Dispatcher.Dispatch(new HydrateAuthFromStorage());
+        }
+    }
+}

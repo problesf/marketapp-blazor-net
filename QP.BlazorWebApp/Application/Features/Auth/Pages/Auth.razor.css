@@ -1,6 +1,7 @@
 ﻿.register-card {
     max-width: 500px;
     width: 100%;
+    height: 
     aspect-ratio: 1 / 1;
     margin: auto;
     display: block; /* asegura el cálculo del aspect-ratio */

@@ -1,11 +1,13 @@
-using Fluxor;
+﻿using Fluxor;
 using Fluxor.Blazor.Web.ReduxDevTools;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using MP;
 using MudBlazor;
 using MudBlazor.Services;
-using QP.BlazorWebApp.Application.Core.Data;
-using QP.BlazorWebApp.Application.Core.Handlers;
+using QP.BlazorWebApp.Application.Features.Auth.Handlers;
 using QP.BlazorWebApp.Application.Features.Auth.Store;
+using QP.BlazorWebApp.Application.Features.Auth.Store.Providers;
 using QP.BlazorWebApp.Application.Features.Auth.Store.State;
 using QP.BlazorWebApp.Application.Features.Products.Store;
 using QP.BlazorWebApp.Application.Features.Products.Store.State;
@@ -27,9 +29,7 @@ builder.Services.AddFluxor(o =>
     );
     o.UseReduxDevTools();
 });
-builder.Services.AddTransient<BearerTokenHandler>();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddScoped<ProductsFacade>();
 builder.Services.AddScoped<AuthFacade>();
 builder.Services.AddMudServices(config =>
@@ -42,15 +42,28 @@ builder.Services.AddMudServices(config =>
     config.SnackbarConfiguration.HideTransitionDuration = 500;
     config.SnackbarConfiguration.ShowTransitionDuration = 500;
 });
-builder.Services.AddHttpClient("MPApi", c =>
+builder.Services.AddTransient<FluxorAuthHandler>();
+builder.Services.AddScoped<AuthenticationStateProvider, FluxorAuthenticationStateProvider>();
+builder.Services.AddAuthenticationCore();
+builder.Services.AddScoped<ProtectedLocalStorage>();
+builder.Services.AddScoped<HttpClient>(sp =>
 {
-    c.BaseAddress = new Uri("http://localhost:5121");
-}).AddHttpMessageHandler<BearerTokenHandler>();
+    var inner = new SocketsHttpHandler();
+
+    var authHandler = ActivatorUtilities.CreateInstance<FluxorAuthHandler>(sp);
+    authHandler.InnerHandler = inner;
+
+    var client = new HttpClient(authHandler)
+    {
+        BaseAddress = new Uri("https://localhost:7189")
+    };
+    return client;
+});
 
 builder.Services.AddScoped<IMPApi>(sp =>
 {
-    var http = sp.GetRequiredService<IHttpClientFactory>().CreateClient("MPApi");
-    return new MPApi("http://localhost:5121", http);
+    var http = sp.GetRequiredService<HttpClient>();
+    return new MPApi("https://localhost:7189", http);
 });
 
 var app = builder.Build();

@@ -1,8 +1,11 @@
 ﻿@using Fluxor.Blazor.Web.Components
 @using QP.BlazorWebApp.Application.Features.Auth.Enum
 @using QP.BlazorWebApp.Application.Features.Auth.Model
+@using QP.BlazorWebApp.Application.Core.Components
+
 @inherits FluxorComponent
 
+<RedirectIfAuthenticated RedirectUrl="/" />
 
 @if (model is not null)
 {

@@ -1,13 +1,52 @@
-﻿<Router AppAssembly="@typeof(App).Assembly">
-    <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
-    </Found>
-    <NotFound>
-        <PageTitle>Not found</PageTitle>
-        <LayoutView Layout="@typeof(MainLayout)">
-            <p role="alert">Sorry, there's nothing at this address.</p>
-        </LayoutView>
-    </NotFound>
-</Router>
-<Fluxor.Blazor.Web.StoreInitializer />
+﻿@using Fluxor
+@using QP.BlazorWebApp.Application.Features.Auth.Store.State
+@using QP.BlazorWebApp.Application.Features.Categories.Store
+@using QP.BlazorWebApp.Application.Features.Products.Store
+@using static QP.BlazorWebApp.Application.Features.Auth.Store.Actions.BootstrapActions
+
+@inject ProductsFacade ProductsFacade
+@inject CategoryFacade CategoryFacade
+@inject IDispatcher Dispatcher
+@inject IState<AuthState> Auth
+
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(App).Assembly">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                <NotAuthorized>
+                    <LayoutView Layout="@typeof(MainLayout)">
+                        <p role="alert">No autorizado.</p>
+                    </LayoutView>
+                </NotAuthorized>
+                <Authorizing>
+                    <LayoutView Layout="@typeof(MainLayout)">
+                        <p>Autenticando…</p>
+                    </LayoutView>
+                </Authorizing>
+            </AuthorizeRouteView>
+            <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+        </Found>
+
+        <NotFound>
+            <PageTitle>Not found</PageTitle>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p role="alert">Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </NotFound>
+    </Router>
+
+    <Fluxor.Blazor.Web.StoreInitializer />
+</CascadingAuthenticationState>
+
+@code {
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+          
+            Dispatcher.Dispatch(new HydrateAuthFromStorage());
+            ProductsFacade.LoadProducts();
+            CategoryFacade.LoadCategories();
+        }
+    }
+}

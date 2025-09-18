@@ -1,106 +1,125 @@
 ﻿using System.Text.Json;
 using Fluxor;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using MP;
 using MudBlazor;
 using QP.BlazorWebApp.Application.Features.Auth.Model;
+using QP.BlazorWebApp.Application.Features.Auth.Store.State;
 using QP.BlazorWebApp.Application.Shared.Exceptions;
 using static QP.BlazorWebApp.Application.Features.Auth.Store.Actions.AuthActions;
 
 namespace QP.BlazorWebApp.Application.Features.Auth.Store.Effects
 {
-    public sealed class AuthEffects
-    {
-        private readonly IMPApi _api;
-        private readonly ISnackbar _snackbar;
-        private readonly NavigationManager _nav;
-        public AuthEffects(IMPApi api, ISnackbar snackbar, NavigationManager nav)
-        {
-            _api = api;
-            _snackbar = snackbar;
-            _nav = nav;
-        }
+	public sealed class AuthEffects
+	{
+		private readonly IMPApi _api;
+		private readonly ISnackbar _snackbar;
+		private readonly NavigationManager _nav;
+		private readonly ProtectedLocalStorage _storage;
 
-        [EffectMethod]
-        public async Task HandleLogin(Login action, IDispatcher dispatcher)
-        {
-            try
-            {
-                LoginQuery query = new LoginQuery
-                {
-                    Email = action.Model.Email,
-                    Password = action.Model.Password
-                };
-                var response = await _api.LoginAsync(query);
-                _snackbar.Add("Bienvenid@ de nuevo", Severity.Success);
-                dispatcher.Dispatch(new LoginSuccess(response.AccessToken, response.Roles));
-                _nav.NavigateTo("/productOs");
+		public AuthEffects(IMPApi api, ISnackbar snackbar, NavigationManager nav, ProtectedLocalStorage storage)
+		{
+			_api = api;
+			_snackbar = snackbar;
+			_nav = nav;
+			_storage = storage;
 
-            }
-            catch (ApiException ex)
-            {
-                ApiErrorDto? error = null;
-                try
-                {
-                    error = JsonSerializer.Deserialize<ApiErrorDto>(ex.Response);
-                }
-                catch { }
+		}
 
-                var msg = error?.Message ?? ex.Message;
-                _snackbar.Add(msg, Severity.Error);
-                dispatcher.Dispatch(new LoginError(ex.Message));
-            }
-        }
-        [EffectMethod]
-        public async Task HandleRegister(Register action, IDispatcher dispatcher)
-        {
-            try
-            {
-                RegisterModel model = action.Model;
-                string accessToken;
-                ICollection<string> roles;
-                if (model.UserType == Enum.UserType.Vendedor)
-                {
-                    RegisterSellerCommand command = new RegisterSellerCommand
-                    {
-                        Email = model.Email,
-                        Password = model.Password1,
-                        StoreName = model.StoreName
-                    };
-                    var response = await _api.SellerAsync(command);
-                    accessToken = response.AccessToken;
-                    roles = response.Roles;
-                }
-                else
-                {
-                    RegisterCustomerCommand command = new RegisterCustomerCommand
-                    {
-                        Email = model.Email,
-                        Password = model.Password1
-                    };
-                    var response = await _api.CustomerAsync(command);
-                    accessToken = response.AccessToken;
-                    roles = response.Roles;
+		[EffectMethod]
+		public async Task HandleLogin(Login action, IDispatcher dispatcher)
+		{
+			try
+			{
+				LoginQuery query = new LoginQuery
+				{
+					Email = action.Model.Email,
+					Password = action.Model.Password
+				};
+				var response = await _api.LoginAsync(query);
+				_snackbar.Add("Bienvenid@ de nuevo", Severity.Success);
+				await _storage.SetAsync("auth", new AuthSnapshot
+				{
+					Token = response.AccessToken,
+					Email = query.Email,
+					Roles = response.Roles?.ToList()
+				});
 
-                }
-                _snackbar.Add("Registro correcto", Severity.Success);
-                dispatcher.Dispatch(new RegisterSuccess(accessToken, roles));
-                _nav.NavigateTo("/products");
+				dispatcher.Dispatch(new LoginSuccess(response.AccessToken, query.Email, response.Roles));
+				_nav.NavigateTo("/productos");
 
-            }
-            catch (ApiException ex)
-            {
-                ApiErrorDto? error = null;
-                try
-                {
-                    error = JsonSerializer.Deserialize<ApiErrorDto>(ex.Response);
-                }
-                catch { }
+			}
+			catch (ApiException ex)
+			{
+				ApiErrorDto? error = null;
+				try
+				{
+					error = JsonSerializer.Deserialize<ApiErrorDto>(ex.Response);
+				}
+				catch { }
 
-                var msg = error?.Message ?? ex.Message;
-                _snackbar.Add(msg, Severity.Error);
-                dispatcher.Dispatch(new RegisterError(msg));
-            }
-        }
-    }
+				var msg = error?.Message ?? ex.Message;
+				_snackbar.Add(msg, Severity.Error);
+				dispatcher.Dispatch(new LoginError(ex.Message));
+			}
+		}
+		[EffectMethod]
+		public async Task HandleRegister(Register action, IDispatcher dispatcher)
+		{
+			try
+			{
+				RegisterModel model = action.Model;
+				string accessToken;
+				ICollection<string> roles;
+				if (model.UserType == Enum.UserType.Vendedor)
+				{
+					RegisterSellerCommand command = new RegisterSellerCommand
+					{
+						Email = model.Email,
+						Password = model.Password1,
+						StoreName = model.StoreName
+					};
+					var response = await _api.SellerAsync(command);
+					accessToken = response.AccessToken;
+					roles = response.Roles;
+				}
+				else
+				{
+					RegisterCustomerCommand command = new RegisterCustomerCommand
+					{
+						Email = model.Email,
+						Password = model.Password1
+					};
+					var response = await _api.CustomerAsync(command);
+					accessToken = response.AccessToken;
+					roles = response.Roles;
+					await _storage.SetAsync("auth", new AuthSnapshot
+					{
+						Token = accessToken,
+						Email = model.Email,
+						Roles = roles?.ToList()
+					});
+
+				}
+				_snackbar.Add("Registro correcto", Severity.Success);
+				dispatcher.Dispatch(new RegisterSuccess(accessToken, model.Email, roles));
+				_nav.NavigateTo("/productos");
+
+			}
+			catch (ApiException ex)
+			{
+				ApiErrorDto? error = null;
+				try
+				{
+					error = JsonSerializer.Deserialize<ApiErrorDto>(ex.Response);
+				}
+				catch { }
+
+				var msg = error?.Message ?? ex.Message;
+				_snackbar.Add(msg, Severity.Error);
+				dispatcher.Dispatch(new RegisterError(msg));
+			}
+		}
+	}
 }

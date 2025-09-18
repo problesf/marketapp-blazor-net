@@ -1,0 +1,11 @@
+﻿@using Fluxor.Blazor.Web.Components
+@inherits FluxorComponent
+
+@if (IsLoading)
+{
+    <div class="loading-overlay">
+        <MudProgressCircular Color="Color.Primary"
+                             Size="Size.Large"
+                             Indeterminate="true" />
+    </div>
+}

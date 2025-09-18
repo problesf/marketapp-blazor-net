@@ -5,3 +5,4 @@ QP.BlazorWebApp.Shared/obj/
 QP.BlazorWebApp.Shared/bin/
 QP.BlazorWebApp.Domain/obj/
 QP.BlazorWebApp.Domain/bin/
+*.zip

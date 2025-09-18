@@ -1,8 +1,8 @@
 {
-    "runtime": "Net80",
+    "runtime": "Net90",
     "documentGenerator": {
         "fromDocument": {
-            "url": "http://localhost:5121/swagger/v1/swagger.json"
+            "url": "https://localhost:7189/swagger/v1/swagger.json"
 
         }
     },

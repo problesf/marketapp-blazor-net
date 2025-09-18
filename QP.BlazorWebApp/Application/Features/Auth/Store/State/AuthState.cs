@@ -6,7 +6,9 @@ namespace QP.BlazorWebApp.Application.Features.Auth.Store.State
     public record AuthState
     {
         public bool AuthLoading { get; init; } = false;
+        public bool IsAuthenticated { get; init; } = false;
 
+        public string Email { get; init; }
         public string? AccessToken { get; set; }
 
         public ICollection<String> Roles { get; init; } = [];

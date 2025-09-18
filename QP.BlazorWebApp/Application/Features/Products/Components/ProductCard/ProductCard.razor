@@ -1,4 +1,6 @@
-﻿<div class="square-card">
+﻿@using Fluxor.Blazor.Web.Components
+@inherits FluxorComponent
+<div class="square-card">
     <MudCard class="h-100 w-auto d-flex flex-column">
         <MudCardHeader class="bg-dark text-white">
             <div class="d-flex flex-column">
@@ -36,6 +38,3 @@
     }
 </div>
 
-@code {
-    [Parameter] public ProductDto product { get; set; }
-}

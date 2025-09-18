@@ -14,7 +14,7 @@ namespace QP.BlazorWebApp.Application.Features.Auth.Components
 
         [Inject] private NavigationManager Navigation { get; set; } = default!;
 
-        private MudForm? _form;
+        MudForm? _form;
         protected override void OnInitialized()
         {
             model = new LoginModel();
@@ -33,3 +33,4 @@ namespace QP.BlazorWebApp.Application.Features.Auth.Components
 
     }
 }
+
