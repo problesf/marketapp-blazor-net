@@ -1,14 +1,4 @@
 ﻿@using Fluxor
-@using QP.BlazorWebApp.Application.Features.Auth.Store.State
-@using QP.BlazorWebApp.Application.Features.Categories.Store
-@using QP.BlazorWebApp.Application.Features.Products.Store
-@using static QP.BlazorWebApp.Application.Features.Auth.Store.Actions.BootstrapActions
-
-@inject ProductsFacade ProductsFacade
-@inject CategoryFacade CategoryFacade
-@inject IDispatcher Dispatcher
-@inject IState<AuthState> Auth
-
 <CascadingAuthenticationState>
     <Router AppAssembly="@typeof(App).Assembly">
         <Found Context="routeData">
@@ -38,15 +28,4 @@
     <Fluxor.Blazor.Web.StoreInitializer />
 </CascadingAuthenticationState>
 
-@code {
-    protected override void OnAfterRender(bool firstRender)
-    {
-        if (firstRender)
-        {
-          
-            Dispatcher.Dispatch(new HydrateAuthFromStorage());
-            ProductsFacade.LoadProducts();
-            CategoryFacade.LoadCategories();
-        }
-    }
-}
+

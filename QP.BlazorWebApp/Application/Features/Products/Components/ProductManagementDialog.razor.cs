@@ -10,6 +10,11 @@ namespace QP.BlazorWebApp.Application.Features.Products.Components
     {
         [Parameter] public ProductDto? ProductParam { get; set; }
 
+        [Parameter]
+        public List<CategoryDto> Categories { get; set; } = [];
+        private List<long> _selectedCategoryIds = new();
+
+
         [CascadingParameter] public IMudDialogInstance? MudDialog { get; set; }
 
         private ProductEditModel _model = new();
@@ -18,6 +23,8 @@ namespace QP.BlazorWebApp.Application.Features.Products.Components
         private string[] _currencies = { "USD", "EUR", "YEN" };
         protected override void OnParametersSet()
         {
+            _selectedCategoryIds = (_model.CategoriesId ?? []);
+
             if (IsEdit)
             {
                 _model = new ProductEditModel
@@ -70,5 +77,29 @@ namespace QP.BlazorWebApp.Application.Features.Products.Components
 
             return _currencies.Where(x => x.Contains(value, StringComparison.InvariantCultureIgnoreCase));
         }
+
+        private Task<IEnumerable<CategoryDto>> SearchCategories(string value, CancellationToken token)
+        {
+            IEnumerable<CategoryDto> src = Categories ?? Enumerable.Empty<CategoryDto>();
+
+            if (string.IsNullOrWhiteSpace(value))
+                return Task.FromResult(src);
+
+            return Task.FromResult(
+                src.Where(c =>
+                    (c?.Name ?? string.Empty)
+                    .Contains(value, StringComparison.InvariantCultureIgnoreCase))
+            );
+        }
+
+        // Cuando cambia la selección en el control, sincronizamos con el modelo
+        private Task OnCategoryIdsChanged(List<long> ids)
+        {
+            _selectedCategoryIds = ids;
+            _model.CategoriesId = ids.ToList();
+            return Task.CompletedTask;
+        }
+
+
     }
 }

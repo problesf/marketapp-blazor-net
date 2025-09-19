@@ -1,0 +1,13 @@
+﻿@page "/categorias"
+
+@using Fluxor.Blazor.Web.Components
+@using QP.BlazorWebApp.Application.Features.Categories.Components
+
+@inherits FluxorComponent
+
+<MudPaper Class="pa-4">
+    @if (!Facade.IsLoading)
+    {
+        <CategoryTree Categories="@Facade.Categories.ToList()" />
+    }
+</MudPaper>

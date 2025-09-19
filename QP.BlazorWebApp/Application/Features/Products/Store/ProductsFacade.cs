@@ -17,7 +17,6 @@ namespace QP.BlazorWebApp.Application.Features.Products.Store
         }
 
         public IState<ProductsState> State => _state;
-
         public bool IsLoading => _state.Value.ProductsLoading;
         public ICollection<ProductDto> Products => _state.Value.Products;
 

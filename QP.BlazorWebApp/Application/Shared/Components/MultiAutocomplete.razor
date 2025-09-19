@@ -1,0 +1,110 @@
+﻿@using MudBlazor
+@typeparam TItem
+
+<div class="@Class" >
+    <MudAutocomplete T="TItem"
+                     @ref="_ac"
+                     Label="@Label"
+                     Placeholder="@Placeholder"
+                     ValueChanged="OnAutocompleteValueChanged"
+                     SearchFunc="Search"
+                     ToStringFunc="ToStringFunc"
+                     CoerceText="false"
+                     CoerceValue="false"
+                     Clearable="true"
+                     Variant="Variant.Outlined"
+                     Dense="true"
+                     ItemTemplate="ItemTemplate"
+                     NoItemsTemplate="NoItemsTemplate" />
+
+    @if (SelectedKeys is not null && SelectedKeys.Count > 0)
+    {
+        <MudChipSet T="long" Class="mt-2" Filter="false">
+            @foreach (var key in SelectedKeys)
+            {
+                var label = TryGetItem(key, out var item)
+                ? ToStringSafe(item!)
+                : key.ToString();
+
+                <MudChip T="long"
+                         Value="@key"
+                         Closeable="true"
+                         OnClose="() => RemoveKey(key)"
+                         Color="ChipColor"
+                         Variant="ChipVariant">
+                    @label
+                </MudChip>
+            }
+        </MudChipSet>
+    }
+</div>
+
+@code {
+    [Parameter] public IEnumerable<TItem> Items { get; set; } = Array.Empty<TItem>();
+    [Parameter] public Func<TItem, string> ToStringFunc { get; set; } = default!;
+    [Parameter] public Func<TItem, long> KeySelector { get; set; } = default!;
+    [Parameter] public RenderFragment<TItem>? ItemTemplate { get; set; }
+    [Parameter] public RenderFragment? NoItemsTemplate { get; set; }
+    [Parameter] public List<long> SelectedKeys { get; set; } = new();
+    [Parameter] public EventCallback<List<long>> SelectedKeysChanged { get; set; }
+    [Parameter] public Func<TItem, string, bool>? MatchFunc { get; set; }
+    [Parameter] public Variant Variant { get; set; } = Variant.Outlined;
+    [Parameter] public string Class { get; set; } = "autocomplete-medium";
+
+    [Parameter] public string? Label { get; set; }
+    [Parameter] public string? Placeholder { get; set; } = "Escribe para buscar…";
+    [Parameter] public Color ChipColor { get; set; } = Color.Primary;
+    [Parameter] public Variant ChipVariant { get; set; } = Variant.Filled;
+
+    private MudAutocomplete<TItem>? _ac;
+    private Dictionary<long, TItem> _byKey = new();
+
+    protected override void OnParametersSet()
+    {
+        _byKey = Items?.ToDictionary(KeySelector) ?? new();
+    }
+
+    private Task<IEnumerable<TItem>> Search(string value, CancellationToken _)
+    {
+        var q = (value ?? string.Empty).Trim();
+        var source = Items ?? Array.Empty<TItem>();
+
+        // Excluir seleccionados siempre
+        var selected = SelectedKeys.ToHashSet();
+        source = source.Where(i => !selected.Contains(KeySelector(i)));
+
+        if (string.IsNullOrEmpty(q))
+            return Task.FromResult(source);
+
+        if (MatchFunc is not null)
+            return Task.FromResult(source.Where(i => MatchFunc(i, q)));
+
+        return Task.FromResult(
+            source.Where(i =>
+                ToStringSafe(i).Contains(q, StringComparison.OrdinalIgnoreCase)));
+    }
+
+    private async Task OnAutocompleteValueChanged(TItem? chosen)
+    {
+        if (chosen is null) return;
+
+        var key = KeySelector(chosen);
+        if (!SelectedKeys.Contains(key))
+        {
+            SelectedKeys.Add(key);
+            await SelectedKeysChanged.InvokeAsync(SelectedKeys);
+        }
+
+        if (_ac is not null)
+            await _ac.ClearAsync();
+    }
+
+    private async Task RemoveKey(long key)
+    {
+        if (SelectedKeys.Remove(key))
+            await SelectedKeysChanged.InvokeAsync(SelectedKeys);
+    }
+
+    private string ToStringSafe(TItem item) => ToStringFunc?.Invoke(item) ?? string.Empty;
+    private bool TryGetItem(long key, out TItem? item) => _byKey.TryGetValue(key, out item!);
+}

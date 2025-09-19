@@ -34,5 +34,7 @@ namespace QP.BlazorWebApp.Application.Features.Products.Model
         public string? Currency { get; set; }
 
         public bool? IsActive { get; set; } = true;
+
+        public List<long> CategoriesId { get; set; } = [];
     }
 }

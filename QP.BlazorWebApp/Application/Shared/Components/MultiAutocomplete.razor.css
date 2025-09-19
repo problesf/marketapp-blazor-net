@@ -1,0 +1,51 @@
+﻿/* Small */
+.autocomplete-small ::deep .mud-input-root {
+    min-height: 36px;
+    font-size: 0.875rem; 
+}
+
+.autocomplete-small ::deep .mud-input-slot {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    line-height: 1.25rem; 
+}
+
+.autocomplete-small ::deep .mud-input-adornment {
+    height: 36px; 
+    display: flex;
+    align-items: center;
+}
+
+/* Medium */
+.autocomplete-medium ::deep .mud-input-root {
+    min-height: 48px;
+    font-size: 0.9375rem;
+}
+
+.autocomplete-medium ::deep .mud-input-slot {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.autocomplete-medium ::deep .mud-input-adornment {
+    height: 48px;
+    display: flex;
+    align-items: center;
+}
+
+/* Large */
+.autocomplete-large ::deep .mud-input-root {
+    min-height: 56px;
+    font-size: 1rem;
+}
+
+.autocomplete-large ::deep .mud-input-slot {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.autocomplete-large ::deep .mud-input-adornment {
+    height: 56px;
+    display: flex;
+    align-items: center;
+}

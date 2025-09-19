@@ -1,0 +1,11 @@
+﻿@page "/productos"
+@using Fluxor.Blazor.Web.Components
+@using QP.BlazorWebApp.Application.Features.Products.Components
+
+@inherits FluxorComponent
+
+    @if (!Facade.IsLoading)
+    {
+        <ProductsList Products="@Facade.Products.ToList()" />
+    }
+

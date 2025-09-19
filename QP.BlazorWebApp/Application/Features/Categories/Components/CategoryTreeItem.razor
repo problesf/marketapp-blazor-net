@@ -1,0 +1,44 @@
+﻿@using Fluxor.Blazor.Web.Components
+@inherits FluxorComponent
+<MudTreeViewItem T="string" Expanded="true" Class="py-1">
+
+    <Content>
+        <MudTooltip Text="@Desc(Node.Description)">
+            <MudText Class="pl-1">
+                @Node.Name (@Node.Slug)
+                @if (Node.IsActive.HasValue && !Node.IsActive.Value)
+                {
+                    <MudChip T="string" Dense Size="Size.Small"
+                             Color="Color.Default" Variant="Variant.Outlined"
+                             Class="ml-2">Inactiva</MudChip>
+                }
+            </MudText>
+        </MudTooltip>
+    </Content>
+
+    <ChildContent>
+        @if (Children is { Count: > 0 })
+        {
+            <MudList T="string" Dense DisablePadding Class="pl-6 pt-1 pb-2">
+                @foreach (var child in FilteredChildren)
+                {
+                    <MudListItem T="string" DisableRipple>
+                        <MudTooltip Text="@Desc(child.Description)">
+                            <MudText>
+                                - @child.Name (@child.Slug)
+                                @if (child.IsActive.HasValue && !child.IsActive.Value)
+                                {
+                                    <MudChip T="string" Dense Size="Size.Small"
+                                             Color="Color.Default" Variant="Variant.Outlined"
+                                             Class="ml-2">Inactiva</MudChip>
+                                }
+                            </MudText>
+                        </MudTooltip>
+                    </MudListItem>
+                }
+            </MudList>
+        }
+    </ChildContent>
+
+</MudTreeViewItem>
+

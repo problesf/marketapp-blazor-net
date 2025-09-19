@@ -1,6 +1,7 @@
 ﻿using Fluxor.Blazor.Web.Components;
 using Microsoft.AspNetCore.Components;
 using QP.BlazorWebApp.Application.Features.Auth.Store;
+using QP.BlazorWebApp.Application.Features.Categories.Store;
 using QP.BlazorWebApp.Application.Features.Products.Store;
 
 namespace QP.BlazorWebApp.Application.Shared.Components
@@ -10,9 +11,10 @@ namespace QP.BlazorWebApp.Application.Shared.Components
     {
         [Inject] protected ProductsFacade ProductsFacade { get; set; } = default!;
         [Inject] protected AuthFacade AuthFacade { get; set; } = default!;
-		
+        [Inject] protected CategoryFacade CategoriesFacade { get; set; } = default!;
+
         protected bool IsLoading =>
-            ProductsFacade.IsLoading || AuthFacade.IsLoading;
+            ProductsFacade.IsLoading || AuthFacade.IsLoading || CategoriesFacade.IsLoading;
     }
 
 }

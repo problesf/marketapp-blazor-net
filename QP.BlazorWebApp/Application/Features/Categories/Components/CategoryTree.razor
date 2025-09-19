@@ -1,0 +1,29 @@
+﻿@using Fluxor.Blazor.Web.Components
+@inherits FluxorComponent
+
+<MudPaper Class="pa-3">
+    <MudStack Spacing="2">
+        <MudTextField @bind-Value="search"
+                      Label="Filtrar por nombre o código"
+                      Adornment="Adornment.Start"
+                      AdornmentIcon="@Icons.Material.Filled.Search"
+                      Immediate="true"
+                      DebounceInterval="250"
+                      Clearable="true" />
+
+        <MudTreeView T="string" Dense Hover ExpandOnClick DisableRipple>
+            @foreach (var root in Categories.Where(c => c.ParentCategoryId == null))
+            {
+                var children = Categories.Where(c => c.ParentCategoryId == root.Id).ToList();
+                if (IncludeRoot(root, children))
+                {
+                    <CategoryTreeItem Node="root"
+                                      Children="children"
+                                      Search="@search" />
+                }
+            }
+        </MudTreeView>
+    </MudStack>
+</MudPaper>
+
+

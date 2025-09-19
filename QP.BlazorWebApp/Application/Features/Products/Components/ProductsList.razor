@@ -1,0 +1,21 @@
+﻿@using Fluxor.Blazor.Web.Components
+
+@inherits FluxorComponent
+
+@if (Facade.IsLoading)
+{
+    <p>Cargando…</p>
+}
+else if (Products.Count() == 0)
+{
+    <p>No hay productos disponibles.</p>
+}
+else
+{
+    <div class="products-grid">
+        @foreach (var p in Products)
+        {
+            <ProductCard product="@p" />
+        }
+    </div>
+}

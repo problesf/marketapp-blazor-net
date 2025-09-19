@@ -5,10 +5,13 @@ using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using MP;
 using MudBlazor;
 using MudBlazor.Services;
+using QP.BlazorWebApp.Application.Core.Services;
+using QP.BlazorWebApp.Application.Core.Services.Impl;
 using QP.BlazorWebApp.Application.Features.Auth.Handlers;
 using QP.BlazorWebApp.Application.Features.Auth.Store;
 using QP.BlazorWebApp.Application.Features.Auth.Store.Providers;
 using QP.BlazorWebApp.Application.Features.Auth.Store.State;
+using QP.BlazorWebApp.Application.Features.Categories.Store;
 using QP.BlazorWebApp.Application.Features.Products.Store;
 using QP.BlazorWebApp.Application.Features.Products.Store.State;
 
@@ -30,6 +33,8 @@ builder.Services.AddFluxor(o =>
     o.UseReduxDevTools();
 });
 builder.Services.AddServerSideBlazor();
+builder.Services.AddScoped<ITokenService, TokenServiceImpl>();
+builder.Services.AddScoped<CategoryFacade>();
 builder.Services.AddScoped<ProductsFacade>();
 builder.Services.AddScoped<AuthFacade>();
 builder.Services.AddMudServices(config =>

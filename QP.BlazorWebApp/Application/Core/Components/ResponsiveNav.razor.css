@@ -1,0 +1,18 @@
+.wrapper {
+    --mud-palette-drawer-background: #0f172a;
+    --mud-palette-drawer-text: #ffffff;
+    --mud-palette-appbar-background: #0f172a;
+}
+
+::deep header.mud-appbar.app-drawer 
+::deep aside.mud-drawer.app-drawer {
+    background-color: var(--mud-palette-drawer-background);
+    color: var(--mud-palette-drawer-text);
+}
+
+    ::deep aside.mud-drawer.app-drawer .mud-nav-link,
+    ::deep aside.mud-drawer.app-drawer .mud-icon-root {
+        color: var(--mud-palette-drawer-text) !important;
+        font-weight: 600;
+    }
+

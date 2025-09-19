@@ -2,6 +2,7 @@
 @using System.ComponentModel.DataAnnotations
 @using QP.BlazorWebApp.Application.Features.Products.Model
 @using Fluxor.Blazor.Web.Components;
+@using QP.BlazorWebApp.Application.Shared.Components
 
 @inherits FluxorComponent
 
@@ -77,6 +78,19 @@
                                      Margin="Margin.Dense" />
                 </MudItem>
 
+            </MudGrid>
+            <MudGrid>
+                <MudItem xs="12">
+                    <MultiAutocomplete TItem="CategoryDto"
+                        Items="Categories"
+                        SelectedKeys="@_selectedCategoryIds"
+                        SelectedKeysChanged="OnCategoryIdsChanged"
+                        ToStringFunc="c => c?.Name"
+                        KeySelector="c => c.Id.Value"
+                        Label="Categorías"
+                        Variant="Variant.Outlined"
+                        Class="autocomplete-small" />
+                </MudItem>
             </MudGrid>
 
         </MudForm>

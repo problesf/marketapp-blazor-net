@@ -5,6 +5,8 @@ namespace QP.BlazorWebApp.Application.Features.Auth.Store.State
     [FeatureState]
     public record AuthState
     {
+        public bool IsHydrated { get; set; } = false;
+        public long ProfileId { get; init; }
         public bool AuthLoading { get; init; } = false;
         public bool IsAuthenticated { get; init; } = false;
 

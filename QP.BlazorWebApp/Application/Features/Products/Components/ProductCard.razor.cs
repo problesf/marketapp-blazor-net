@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MP;
 
-namespace QP.BlazorWebApp.Application.Features.Products.Components.ProductCard
+namespace QP.BlazorWebApp.Application.Features.Products.Components
 {
     public partial class ProductCard
     {

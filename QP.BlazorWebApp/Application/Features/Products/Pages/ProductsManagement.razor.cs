@@ -2,29 +2,37 @@
 using Microsoft.AspNetCore.Components;
 using MP;
 using MudBlazor;
+using QP.BlazorWebApp.Application.Features.Auth.Store;
+using QP.BlazorWebApp.Application.Features.Categories.Store;
 using QP.BlazorWebApp.Application.Features.Products.Components;
 using QP.BlazorWebApp.Application.Features.Products.Store;
-using QP.BlazorWebApp.Application.Features.Products.Store.State;
 
 namespace QP.BlazorWebApp.Application.Features.Products.Pages
 {
-    public partial class ProductsList : FluxorComponent
+    public partial class ProductsManagement : FluxorComponent
     {
+        List<ProductDto> SellerProducts { get; set; } = [];
         [Inject] private ProductsFacade Facade { get; set; }
-        [Inject] private Fluxor.IState<ProductsState> ProductsState { get; set; }
+
+        [Inject] private CategoryFacade CategoryFacade { get; set; }
+
+
+        [Inject] private AuthFacade Auth { get; set; }
+
         [Inject] private IDialogService DialogService { get; set; }
 
         protected override void OnInitialized()
         {
+            SellerProducts = Facade.Products
+                                   .Where(p => p.SellerProfileId == Auth.ProfileId)
+                                   .ToList();
+
+            Facade.State.StateChanged += (_, __) =>
+            {
+                InvokeAsync(StateHasChanged);
+            };
             base.OnInitialized();
         }
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (firstRender)
-                Facade.LoadProducts();
-        }
-
         private async Task OpenCreateDialog()
         {
             var options = new DialogOptions
@@ -36,7 +44,7 @@ namespace QP.BlazorWebApp.Application.Features.Products.Pages
 
             var dialog = DialogService.Show<ProductManagementDialog>(
                 "ProductManagement",
-                new DialogParameters(),
+                new DialogParameters { ["Categories"] = CategoryFacade.Categories },
                 options
             );
 

@@ -1,0 +1,20 @@
+﻿@page "/misproductos"
+@using Fluxor.Blazor.Web.Components
+@using QP.BlazorWebApp.Application.Features.Products.Components
+
+@inherits FluxorComponent
+<MudPaper Class="pa-4">
+    @if (!Facade.IsLoading)
+    {
+        <MudStack Direction="Row" Justify="Justify.SpaceBetween" AlignItems="AlignItems.End" Class="mb-3">
+            <MudButton Color="Color.Primary"
+                       Variant="Variant.Filled"
+                       StartIcon="@Icons.Material.Filled.Add"
+                       OnClick="OpenCreateDialog">
+                Crear producto
+            </MudButton>
+        </MudStack>
+        <ProductsList Products="@Facade.Products.ToList()"/>
+    }
+</MudPaper>
+

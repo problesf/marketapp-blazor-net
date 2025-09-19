@@ -4,6 +4,8 @@
     {
         public string? Token { get; set; }
         public string? Email { get; set; }
-        public List<string>? Roles { get; set; }
+        public List<string> Roles { get; set; }
+        public long ProfileId { get; init; }
+
     }
 }

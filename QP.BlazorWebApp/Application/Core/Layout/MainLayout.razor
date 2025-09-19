@@ -1,43 +1,90 @@
 ﻿@using Fluxor
 @using QP.BlazorWebApp.Application.Core.Components
+@using QP.BlazorWebApp.Application.Features.Auth.Store
 @using QP.BlazorWebApp.Application.Features.Auth.Store.State
+@using QP.BlazorWebApp.Application.Features.Categories.Store.State
+@using QP.BlazorWebApp.Application.Features.Products.Store
+@using QP.BlazorWebApp.Application.Features.Categories.Store
+@using QP.BlazorWebApp.Application.Features.Products.Store.State
+@using QP.BlazorWebApp.Application.Shared.Components
 @using static QP.BlazorWebApp.Application.Features.Auth.Store.Actions.BootstrapActions
 
 @inherits LayoutComponentBase
 
 @inject IDispatcher Dispatcher
-@inject IState<AuthState> Auth
+@inject AuthFacade AuthFacade
+@inject CategoryFacade CategoryFacade
+@inject ProductsFacade ProductsFacade
 
 <MudThemeProvider />
 <MudPopoverProvider />
-
 <MudDialogProvider />
-
 <MudSnackbarProvider />
+
 <PageTitle>QP.BlazorWebApp</PageTitle>
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+@if (!AllReady)
+{
+    <LoadingOverlay />
+}
+else
+{
+    <MudLayout>
+        @if (IsLoading)
+        {
+            <LoadingOverlay />
+        }
+        <ResponsiveNav />
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+        <MudMainContent>
+            <article class="content px-4">
+                @Body
+            </article>
+        </MudMainContent>
+    </MudLayout>
+}
 
 @code {
+    private bool AllReady =>
+       AuthFacade.IsHydrated
+        && !ProductsFacade.IsLoading
+        && !CategoryFacade.IsLoading;
+    private bool IsLoading =>
+       AuthFacade.IsLoading
+        || ProductsFacade.IsLoading
+        || CategoryFacade.IsLoading;
+
+    protected override void OnInitialized()
+    {
+        AuthFacade.State.StateChanged += OnStateChanged;
+        ProductsFacade.State.StateChanged += OnStateChanged;
+        CategoryFacade.State.StateChanged += OnStateChanged;
+    }
+
+    private void OnStateChanged(object? sender, EventArgs e)
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
     protected override void OnAfterRender(bool firstRender)
     {
         if (firstRender)
         {
-            Dispatcher.Dispatch(new HydrateAuthFromStorage());
+            AuthFacade.ReHydrate();
+            ProductsFacade.LoadProducts();
+            CategoryFacade.LoadCategories();
         }
+    }
+
+    private void LogoutSubmit()
+    {
+        AuthFacade.Logout();
+    }
+
+    public void Dispose()
+    {
+        AuthFacade.State.StateChanged -= OnStateChanged;
+        ProductsFacade.State.StateChanged -= OnStateChanged;
+        CategoryFacade.State.StateChanged -= OnStateChanged;
     }
 }
